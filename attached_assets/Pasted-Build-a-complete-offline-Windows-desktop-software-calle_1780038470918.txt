@@ -1,0 +1,251 @@
+Build a complete offline Windows desktop software called:
+
+"Vyapar Outstanding Formatter"
+
+==================================================
+MAIN PURPOSE
+==================================================
+
+The software should:
+
+1. Import Vyapar Outstanding Excel export
+2. Group parties by Address/Area/City
+3. Generate professional printable reports
+4. Save as PDF
+5. Print directly
+6. Work fully offline
+7. Generate Windows EXE installer
+
+The software should look like a traditional accounting print software.
+
+==================================================
+HEADER DESIGN REQUIREMENT
+==================================================
+
+At the top of every report, create a customizable header exactly like this style:
+
+------------------------------------------------
+
+NURMOHMED SULEMANBHAI MEMAN
+NATIONAL HIGHWAY ROAD THARA
+MO.9898257361. MO9724800088
+
+City Wise Outstanding Receivable
+
+From Date: __/__/____   To __/__/____
+
+------------------------------------------------
+
+The header fields must be editable inside the software.
+
+Create settings fields for:
+
+1. Company Name
+2. Address Line
+3. Mobile Number 1
+4. Mobile Number 2
+5. Report Title
+6. From Date
+7. To Date
+
+The user must be able to:
+- Edit these fields
+- Save them permanently
+- Auto load next time app opens
+
+Store settings locally using JSON or local database.
+
+==================================================
+TECH STACK
+==================================================
+
+Use:
+- Electron
+- React + Vite
+- TailwindCSS
+- Node.js
+- XLSX
+- Puppeteer
+- electron-builder
+
+==================================================
+OFFLINE WINDOWS SOFTWARE
+==================================================
+
+Requirements:
+- Fully offline working
+- No internet required
+- Generate Windows EXE installer
+- Anyone should be able to install and use it
+
+Use electron-builder to generate:
+- setup.exe installer
+
+==================================================
+CORE FEATURES
+==================================================
+
+1. Upload Vyapar Excel Export
+
+2. Auto detect columns:
+- Party Name
+- Mobile Number
+- Address / Area / City
+- Outstanding Amount
+
+3. Group all parties by address/city.
+
+IMPORTANT:
+If multiple parties have same address,
+put all of them inside ONE section.
+
+Example:
+
+ADHGAM
+
+Party 1
+Party 2
+Party 3
+
+City Total
+
+NOT multiple ADHGAM headings.
+
+==================================================
+ADDRESS NORMALIZATION
+==================================================
+
+Normalize addresses automatically:
+
+Example:
+adhgam
+ADHGAM
+Adhgam
+
+All should become:
+ADHGAM
+
+Use logic:
+
+const address = row.address
+  ?.trim()
+  .toUpperCase();
+
+==================================================
+REPORT FORMAT
+==================================================
+
+Create report like traditional accounting print.
+
+Example:
+
+------------------------------------------------
+
+ADHGAM
+
+Party Name              Mobile           Amount
+------------------------------------------------
+DHAMABHAI               8799397063       7945
+ISVERBHAI                                 11360
+PATEL TRADERS           9876543210       6632
+
+City Total                                25937
+
+------------------------------------------------
+
+AKOLI
+
+Party Name              Mobile           Amount
+------------------------------------------------
+D.K AKOLI                                15990
+JAY SALES               9898989898       15090
+
+City Total                                31080
+
+------------------------------------------------
+
+==================================================
+PDF REQUIREMENTS
+==================================================
+
+Add:
+- Save as PDF button
+- Print button
+- Preview button
+
+IMPORTANT:
+Fix print functionality properly.
+
+Requirements:
+- Print must work correctly
+- Save PDF must generate actual PDF
+- Multi-page PDF support
+- A4 portrait layout
+- Proper spacing
+- Table borders
+- Bold totals
+- Right aligned amount column
+
+Use Puppeteer for real PDF generation.
+
+==================================================
+UI REQUIREMENTS
+==================================================
+
+Keep UI simple.
+
+DO NOT create fancy dashboard.
+
+Only:
+- Header settings section
+- Upload Excel button
+- Preview button
+- Save PDF button
+- Print button
+
+Simple accounting software style UI.
+
+==================================================
+LOCAL SETTINGS STORAGE
+==================================================
+
+Save header fields permanently.
+
+When app reopens:
+- Company name auto load
+- Address auto load
+- Mobile numbers auto load
+
+Use:
+- local JSON file
+OR
+- electron-store
+
+==================================================
+EXE BUILD REQUIREMENTS
+==================================================
+
+Generate:
+- Full Electron source code
+- Working package.json
+- Build scripts
+- electron-builder configuration
+
+Command should generate:
+setup.exe
+
+==================================================
+IMPORTANT
+==================================================
+
+Do NOT create mock/demo UI.
+
+Build real working:
+- Excel parsing
+- Grouping logic
+- Print functionality
+- PDF generation
+- Offline desktop app
+- EXE installer
+
+Software should be production-ready.

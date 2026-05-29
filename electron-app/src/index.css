@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background: #f0ede8;
+  color: #111;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Electron drag region */
+.drag-region {
+  -webkit-app-region: drag;
+}
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white !important; }
+}
+
+@page { size: A4 portrait; margin: 15mm; }

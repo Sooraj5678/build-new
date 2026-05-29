@@ -1,0 +1,185 @@
+Build a complete offline Windows desktop software called "Vyapar Outstanding Formatter".
+
+Purpose:
+Convert Vyapar Outstanding Excel export files into professional city-wise printable reports exactly like traditional accounting outstanding reports.
+
+MAIN REQUIREMENT:
+If multiple parties have the same Address/Area/City, all of them must appear under ONE single section heading.
+
+Example:
+
+ADHGAM
+--------------------------------
+Party 1
+Party 2
+Party 3
+
+City Total
+
+NOT separate repeated ADHGAM sections.
+
+Normalize addresses automatically:
+- Trim spaces
+- Convert to uppercase
+- Avoid duplicate groups caused by spelling format differences
+
+Example:
+adhgam
+ADHGAM
+Adhgam
+
+All should become one group:
+ADHGAM
+
+==================================================
+TECH STACK
+==================================================
+
+Use:
+- Electron
+- React + Vite
+- TailwindCSS
+- Node.js
+- XLSX package
+- Puppeteer
+- electron-builder
+
+The app must generate:
+- Windows EXE installer
+- Fully offline desktop software
+
+No internet required after installation.
+
+==================================================
+CORE FEATURES
+==================================================
+
+1. Upload Vyapar Excel Export
+
+2. Read these columns automatically:
+- Party Name
+- Mobile Number
+- Address / Area / City
+- Outstanding Amount
+
+3. Group all parties by Address/Area/City.
+
+4. Show report in this format:
+
+------------------------------------------------
+
+ADHGAM
+
+Party Name              Mobile           Amount
+------------------------------------------------
+DHAMABHAI               8799397063       7945
+ISVERBHAI                                 11360
+PATEL TRADERS           9876543210       6632
+
+City Total                                25937
+
+------------------------------------------------
+
+AKOLI
+
+Party Name              Mobile           Amount
+------------------------------------------------
+D.K AKOLI                                15990
+JAY SALES               9898989898       15090
+
+City Total                                31080
+
+------------------------------------------------
+
+5. Auto calculate city totals.
+
+6. Generate:
+- Print preview
+- PDF
+- Direct print
+
+7. A4 Portrait Layout.
+
+8. Multi-page support.
+
+9. Proper table borders and spacing.
+
+10. Simple minimal interface only.
+
+==================================================
+UI REQUIREMENTS
+==================================================
+
+DO NOT create fancy dashboards.
+
+Keep interface simple like old accounting software.
+
+Only include:
+- Upload Excel button
+- Preview Report button
+- Generate PDF button
+- Print button
+
+Minimal clean layout.
+
+==================================================
+PDF REQUIREMENTS
+==================================================
+
+The generated PDF must:
+- Look like traditional accounting reports
+- Have city/address heading sections
+- Have clean alignment
+- Right-align amount column
+- Bold "City Total"
+- Support multiple pages
+- Be print ready
+
+==================================================
+EXCEL PROCESSING RULES
+==================================================
+
+1. Auto detect headers even if names vary slightly.
+
+Examples:
+- Address
+- Area
+- City
+
+should be treated as same field.
+
+2. Normalize addresses:
+
+Example code logic:
+
+const address = row.address
+  ?.trim()
+  .toUpperCase();
+
+3. Empty address should become:
+UNKNOWN
+
+==================================================
+OUTPUT FILES
+==================================================
+
+Generate:
+- Full working source code
+- Electron desktop app
+- Windows EXE installer configuration
+- Package.json
+- Build scripts
+
+==================================================
+IMPORTANT
+==================================================
+
+Do NOT create mock/demo UI.
+
+Build real working:
+- Excel parsing
+- Grouping logic
+- PDF generation
+- Print functionality
+
+The software must be production-ready and usable by real accounting users.
